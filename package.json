@@ -1,0 +1,26 @@
+{
+    "name": "@guesser/guesserjs",
+    "version": "0.0.1",
+    "description": "",
+    "directories": {
+        "test": "test"
+    },
+    "main": "./scripts/index.js",
+    "scripts": {
+        "test": "mocha './__test__/tests.js'",
+        "init": "bash ./scripts/init_chain.sh"
+    },
+    "author": "Carlos Gonzalez <carlosgj94@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GuesserProtocol/GuesserJs.git"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^4.1.2",
+        "guesser-contracts": "0.0.3",
+        "mocha": "^5.2.0",
+        "web3": "^1.0.0-beta.36",
+        "truffle-contract": "4.0.0-next.0"
+    }
+}
