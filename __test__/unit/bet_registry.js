@@ -18,13 +18,13 @@ describe('Bet Registry testing', () => {
     })
 
     it('should set the proper bet kernel', async () => {
-        console.log(accounts[0]);
         let betKernelAddress = await guesser.contracts.betRegistry.betKernel();
+        let betRegistryAddress = await guesser.contracts.betRegistry.address();
 
-        await guesser.contracts.betRegistry.setBetKernel(accounts[0], accounts[0]);
+        await guesser.contracts.betRegistry.setBetKernel(betRegistryAddress, accounts[0]);
         expect(
             await guesser.contracts.betRegistry.betKernel()
-        ).to.be.equal(accounts[0]);
+        ).to.be.equal(betRegistryAddress);
 
         await guesser.contracts.betRegistry.setBetKernel(betKernelAddress, accounts[0]);
     });

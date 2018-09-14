@@ -21,6 +21,10 @@ class BetRegistry {
         return await this.web3.eth.net.getNetworkType();
     }
 
+    async address() {
+        return await this.instance.address;
+    }
+
     /******************
      * RegistryStorage
      *****************/
