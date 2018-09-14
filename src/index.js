@@ -1,2 +1,3 @@
-var Guesser = require('./guesser');
+const Guesser = require('./guesser');
+
 module.exports = Guesser;
