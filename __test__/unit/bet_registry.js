@@ -1,6 +1,5 @@
-const chai = require('chai');
+const { expect } = require('chai');
 
-const { expect } = chai.expect;
 const Web3 = require('web3');
 const Guesser = require('../../src/index');
 
