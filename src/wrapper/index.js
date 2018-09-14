@@ -1,5 +1,6 @@
 // Core Contracts
 const BetRegistry = require('./contract_wrappers/bet_registry_wrapper.js');
+const ProxyRegistry = require('./contract_wrappers/proxy_registry_wrapper.js');
 
 // Proxy Contracts
 const ERC20BetKernelProxy = require('./contract_wrappers/bet_kernel_proxies/ERC20_bet_kernel_proxy.js');
@@ -15,29 +16,31 @@ class Wrappers {
     this.web3 = web3;
     // Core Contracts
     this.betRegistry = new BetRegistry(web3);
+    this.proxyRegistry = new ProxyRegistry(web3);
 
     // Proxy Contracts
     this.ERC20BetKernelProxy = new ERC20BetKernelProxy(web3);
     this.ERC721BetKernelProxy = new ERC721BetKernelProxy(web3);
     this.ERC20BetPaymentProxy = new ERC20BetPaymentProxy(web3);
     this.ERC721BetPaymentProxy = new ERC721BetPaymentProxy(web3);
-    this.BetOwnerBasedOracle = new BetOwnerBasedOracle(web3);
-    this.OwnerBasedOracle = new OwnerBasedOracle(web3);
-    this.OwnerBasedTermsProxy = new OwnerBasedTermsProxy(web3);
+    this.betOwnerBasedOracle = new BetOwnerBasedOracle(web3);
+    this.ownerBasedOracle = new OwnerBasedOracle(web3);
+    this.ownerBasedTermsProxy = new OwnerBasedTermsProxy(web3);
   }
 
   async init() {
     // Core Contracts
     await this.betRegistry.init();
+    await this.proxyRegistry.init();
 
     // Proxy Contracts
     await this.ERC20BetKernelProxy.init();
     await this.ERC721BetKernelProxy.init();
     await this.ERC20BetPaymentProxy.init();
     await this.ERC721BetPaymentProxy.init();
-    await this.BetOwnerBasedOracle.init();
-    await this.OwnerBasedOracle.init();
-    await this.OwnerBasedTermsProxy.init();
+    await this.betOwnerBasedOracle.init();
+    await this.ownerBasedOracle.init();
+    await this.ownerBasedTermsProxy.init();
   }
 }
 

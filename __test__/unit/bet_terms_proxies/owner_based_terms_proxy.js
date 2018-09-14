@@ -17,6 +17,6 @@ describe('Owner Based Terms Proxy', () => {
   });
 
   it('should be the same address as the proxy registry registry', async () => {
-    await guesser.contracts.OwnerBasedTermsProxy.address();
+    await guesser.contracts.ownerBasedTermsProxy.address();
   });
 });

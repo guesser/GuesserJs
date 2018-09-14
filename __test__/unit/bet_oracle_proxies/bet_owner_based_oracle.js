@@ -17,6 +17,6 @@ describe('Bet Owner Based Oracle Proxy', () => {
   });
 
   it('should be the same address as the proxy registry registry', async () => {
-    await guesser.contracts.BetOwnerBasedOracle.address();
+    await guesser.contracts.betOwnerBasedOracle.address();
   });
 });
