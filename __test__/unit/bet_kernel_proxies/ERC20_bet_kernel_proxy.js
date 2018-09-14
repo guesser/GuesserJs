@@ -1,8 +1,8 @@
-// const chai = require('chai');
-
-// const expect = chai.expect;
+const chai = require('chai');
 const Web3 = require('web3');
 const Guesser = require('../../../src/index');
+
+const { expect } = chai;
 
 describe('ERC20 Bet Kernel Proxy testing', () => {
   let guesser;
@@ -17,6 +17,10 @@ describe('ERC20 Bet Kernel Proxy testing', () => {
   });
 
   it('should be the same address as the proxy registry registry', async () => {
-    await guesser.contracts.ERC20BetKernelProxy.address();
+    const betKernelProxyAddress = await guesser.contracts.ERC20BetKernelProxy.address();
+
+    expect(
+      await guesser.contracts.proxyRegistry.addressInProxies(betKernelProxyAddress),
+    ).to.be.equal(true);
   });
 });

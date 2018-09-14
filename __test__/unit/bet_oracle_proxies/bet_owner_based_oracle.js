@@ -1,8 +1,8 @@
-// const chai = require('chai');
-
-// const expect = chai.expect;
+const chai = require('chai');
 const Web3 = require('web3');
 const Guesser = require('../../../src/index');
+
+const { expect } = chai;
 
 describe('Bet Owner Based Oracle Proxy', () => {
   let guesser;
@@ -17,6 +17,10 @@ describe('Bet Owner Based Oracle Proxy', () => {
   });
 
   it('should be the same address as the proxy registry registry', async () => {
-    await guesser.contracts.betOwnerBasedOracle.address();
+    const proxyAddress = await guesser.contracts.betOwnerBasedOracle.address();
+
+    expect(
+      await guesser.contracts.proxyRegistry.addressInProxies(proxyAddress),
+    ).to.be.equal(true);
   });
 });

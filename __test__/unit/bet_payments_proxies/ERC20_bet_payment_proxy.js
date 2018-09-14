@@ -1,6 +1,6 @@
-// const chai = require('chai');
+const chai = require('chai');
 
-// const expect = chai.expect;
+const { expect } = chai;
 const Web3 = require('web3');
 const Guesser = require('../../../src/index');
 
@@ -17,6 +17,10 @@ describe('ERC20 Bet Payment Proxy testing', () => {
   });
 
   it('should be the same address as the proxy registry registry', async () => {
-    await guesser.contracts.ERC20BetPaymentProxy.address();
+    const proxyAddress = await guesser.contracts.ERC20BetPaymentProxy.address();
+
+    expect(
+      await guesser.contracts.proxyRegistry.addressInProxies(proxyAddress),
+    ).to.be.equal(true);
   });
 });
