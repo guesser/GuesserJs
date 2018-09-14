@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-
 const Web3 = require('web3');
 const Guesser = require('../../src/index');
 

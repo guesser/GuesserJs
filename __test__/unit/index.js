@@ -3,3 +3,5 @@
 require('./bet_registry.js');
 require('./bet_kernel_proxies/ERC20_bet_kernel_proxy.js');
 require('./bet_kernel_proxies/ERC721_bet_kernel_proxy.js');
+require('./bet_payments_proxies/ERC20_bet_payment_proxy.js');
+require('./bet_payments_proxies/ERC721_bet_payment_proxy.js');
