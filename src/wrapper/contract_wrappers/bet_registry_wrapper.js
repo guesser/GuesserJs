@@ -139,6 +139,92 @@ class BetRegistry {
       throw err;
     }
   }
+
+  // Setters
+  async setPlayerBetReturned(hash, playerBetHash, player) {
+    try {
+      return await this.instance.setPlayerBetReturned(hash, playerBetHash, player);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  // Getters
+  getBetKernelProxy(hash) {
+    return this.instance.getBetKernelProxy.call(hash);
+  }
+
+  getBetPaymentsProxy(hash) {
+    return this.instance.getBetPaymentsProxy.call(hash);
+  }
+
+  getBetOracleProxy(hash) {
+    return this.instance.getBetOracleProxy.call(hash);
+  }
+
+  getBetTermsProxy(hash) {
+    return this.instance.getBetTermsProxy.call(hash);
+  }
+
+  getBetPaymentsToken(hash) {
+    return this.instance.getBetPaymentsToken.call(hash);
+  }
+
+  getBetTermsHash(hash) {
+    return this.instance.getBetTermsHash.call(hash);
+  }
+
+  getBetTitle(hash) {
+    return this.instance.getBetTitle.call(hash);
+  }
+
+  getBetDatetime(hash) {
+    return this.instance.getBetDatetime.call(hash);
+  }
+
+  getBetCreator(hash) {
+    return this.instance.getBetCreator.call(hash);
+  }
+
+  getTotalPrincipal(hash) {
+    return this.instance.getTotalPrincipal.call(hash);
+  }
+
+  getTotalPrincipalInOption(hash, option) {
+    return this.instance.getTotalPrincipalInOption.call(hash, option);
+  }
+
+  getOptionTitle(hash, option) {
+    return this.instance.getOptionTitle.call(hash, option);
+  }
+
+  getPlayerBetPlayer(hash, playerBetHash) {
+    return this.instance.getPlayerBetPlayer.call(hash, playerBetHash);
+  }
+
+  getPlayerBetOption(hash, playerBetHash) {
+    return this.instance.getPlayerBetOption.call(hash, playerBetHash);
+  }
+
+  getPlayerBetPrincipal(hash, playerBetHash) {
+    return this.instance.getPlayerBetPrincipal.call(hash, playerBetHash);
+  }
+
+  getPlayerBetReturned(hash, playerBetHash) {
+    return this.instance.getPlayerBetReturned.call(hash, playerBetHash);
+  }
+
+  betExists(hash) {
+    return this.instance.betExists.call(hash);
+  }
+
+  playerBetExists(hash, playerBetHash) {
+    return this.instance.playerBetExists.call(hash, playerBetHash);
+  }
+
+  isAuthorised(sender) {
+    return this.instance.isAuthorised.call(sender);
+  }
 }
 
 module.exports = BetRegistry;

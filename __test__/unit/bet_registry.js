@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const Web3 = require('web3');
-// const contracts = require('guesser-contracts');
-// const contract = require('truffle-contract');
+const contracts = require('guesser-contracts');
+const contract = require('truffle-contract');
 const Guesser = require('../../src/index');
 
 describe('Bet Registry testing', () => {
@@ -31,18 +31,43 @@ describe('Bet Registry testing', () => {
   });
 
   it('should create a bet', async () => {
-    /*
     const betKernelProxyAddress = await guesser.contracts.ERC20BetKernelProxy.address();
     const betPaymentsProxyAddress = await guesser.contracts.ERC20BetPaymentProxy.address();
 
-    let dummyToken = contract(contracts.DummyToken);
+    const dummyToken = contract(contracts.DummyToken);
     dummyToken.setProvider(web3.eth.currentProvider.host);
-    let dummyTokenInstance = await dummyToken.deployed();
+    const dummyTokenInstance = await dummyToken.new(
+      'DummyToken',
+      'DMT',
+      10,
+      10,
+      { from: accounts[0] },
+    );
 
-    const betOracleProxyAddress = await guesser.contracts.BetOwnerBasedOracle.address();
+
+    const betOracleProxyAddress = await guesser.contracts.betOwnerBasedOracle.address();
     const betTermsProxyAddress = await guesser.contracts.ownerBasedTermsProxy.address();
     // Here we should ask for the hash of the terms
+    const betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
+    await guesser.contracts.ownerBasedTermsProxy.setTermsHash(
+      betTermsHash,
+      accounts[0],
+    );
+
     const title = web3.utils.asciiToHex('Hello world');
-    */
+
+    const betHash = await guesser.contracts.betRegistry.createBet(
+      betKernelProxyAddress,
+      betPaymentsProxyAddress,
+      dummyTokenInstance.address,
+      betOracleProxyAddress,
+      betTermsProxyAddress,
+      betTermsHash,
+      title,
+      accounts[0],
+    );
+    expect(
+      await guesser.contracts.betRegistry.betExists(betHash),
+    ).to.be.equal(true);
   });
 });
