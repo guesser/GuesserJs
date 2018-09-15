@@ -27,4 +27,14 @@ describe('Bet Registry testing', () => {
 
     await guesser.contracts.betRegistry.setBetKernel(betKernelAddress, accounts[0]);
   });
+
+  it('should create a bet', async () => {
+    // const betKernelProxyAddress = await guesser.contracts.ERC20BetKernelProxy.address();
+    // const betPaymentsProxyAddress = await guesser.contracts.ERC20BetPaymentProxy.address();
+    // Here it should go the payments token
+    // const betOracleProxyAddress = await guesser.contracts.BetOwnerBasedOracle.address();
+    // const betTermsProxyAddress = await guesser.contracts.ownerBasedTermsProxy.address();
+    // Here we should ask for the hash of the terms
+    // const title = web3.utils.asciiToHex('Hello world');
+  });
 });

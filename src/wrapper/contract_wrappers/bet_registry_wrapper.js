@@ -94,11 +94,51 @@ class BetRegistry {
       throw err;
     }
   }
+
   /** ****************
      * Bet Registry
      **************** */
+  async createBet(
+    kernelProxy,
+    paymentsProxy,
+    paymentsToken,
+    oracleProxy,
+    termsProxy,
+    termsHash,
+    title,
+    sender,
+  ) {
+    const salt = Math.random() * 9007199254740991; // Js max number
+    try {
+      const betHash = await this.instance.createBet.call(
+        kernelProxy,
+        paymentsProxy,
+        paymentsToken,
+        oracleProxy,
+        termsProxy,
+        termsHash,
+        title,
+        salt,
+        { from: sender },
+      );
 
-  // Getters
+      await this.instance.createBet(
+        kernelProxy,
+        paymentsProxy,
+        paymentsToken,
+        oracleProxy,
+        termsProxy,
+        termsHash,
+        title,
+        salt,
+        { from: sender },
+      );
+
+      return betHash;
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = BetRegistry;
