@@ -140,6 +140,28 @@ class BetRegistry {
     }
   }
 
+  async insertPlayerBet(hash, player, option, number, sender) {
+    try {
+      const playerBetHash = this.instance.insertPlayerBet.call(
+        hash,
+        sender,
+        option,
+        number,
+        { from: sender },
+      );
+      await this.instance.insertPlayerBet(
+        hash,
+        sender,
+        option,
+        number,
+        { from: sender },
+      );
+      return playerBetHash;
+    } catch (err) {
+      throw err;
+    }
+  }
+
   // Setters
   async setPlayerBetReturned(hash, playerBetHash, player) {
     try {

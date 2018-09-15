@@ -8,6 +8,7 @@ describe('Bet Registry testing', () => {
   let guesser;
   let web3;
   let accounts;
+  let betHash;
 
   before(async () => {
     const web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
@@ -56,7 +57,7 @@ describe('Bet Registry testing', () => {
 
     const title = web3.utils.asciiToHex('Hello world');
 
-    const betHash = await guesser.contracts.betRegistry.createBet(
+    betHash = await guesser.contracts.betRegistry.createBet(
       betKernelProxyAddress,
       betPaymentsProxyAddress,
       dummyTokenInstance.address,
@@ -69,5 +70,32 @@ describe('Bet Registry testing', () => {
     expect(
       await guesser.contracts.betRegistry.betExists(betHash),
     ).to.be.equal(true);
+
+    expect(
+      await guesser.contracts.betRegistry.getBetTitle(betHash),
+    ).to.be.equal(title);
+  });
+
+  it('should allow to place a bet from a player', async () => {
+    const playerBetHash = await guesser.contracts.betRegistry.insertPlayerBet(
+      betHash,
+      accounts[0],
+      0,
+      1,
+      accounts[0],
+    );
+
+    const playerBetPrincipal = await guesser.contracts.betRegistry
+      .getPlayerBetPrincipal(betHash, playerBetHash);
+
+    const betPrincipal = await guesser.contracts.betRegistry
+      .getTotalPrincipal(betHash);
+
+    expect(
+      playerBetPrincipal.toNumber(),
+    ).to.be.equal(1);
+    expect(
+      betPrincipal.toNumber(),
+    ).to.be.equal(1);
   });
 });
