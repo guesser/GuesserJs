@@ -24,6 +24,21 @@ class OwnerBasedTermsProxy {
   async address() {
     return this.instance.address;
   }
+
+  getTermsHash() {
+    return this.instance.getTermsHash.call();
+  }
+
+  betsNumber() {
+    return this.instance.betsNumber.call();
+  }
+
+  async setTermsHash(hash, sender) {
+    await this.instance.setTermsHash(
+      await hash,
+      { from: sender },
+    );
+  }
 }
 
 module.exports = OwnerBasedTermsProxy;
