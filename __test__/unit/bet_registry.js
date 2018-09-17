@@ -77,6 +77,13 @@ describe('Bet Registry testing', () => {
   });
 
   it('should allow to place a bet from a player', async () => {
+    const playerBetHashCall = await guesser.contracts.betRegistry.getPlayerBetHash(
+      betHash,
+      accounts[0],
+      0,
+      1,
+    );
+
     const playerBetHash = await guesser.contracts.betRegistry.insertPlayerBet(
       betHash,
       accounts[0],
@@ -92,10 +99,28 @@ describe('Bet Registry testing', () => {
       .getTotalPrincipal(betHash);
 
     expect(
+      playerBetHashCall,
+    ).to.be.equal(playerBetHash);
+    expect(
       playerBetPrincipal.toNumber(),
     ).to.be.equal(1);
     expect(
       betPrincipal.toNumber(),
     ).to.be.equal(1);
+
+    expect().to.be.equal(1);
+  });
+
+  it('should allow to set the title of an option', async () => {
+    await guesser.contracts.betRegistry.setOptionTitle(
+      betHash,
+      0,
+      'Option 1',
+      accounts[0],
+    );
+
+    expect(
+      await guesser.contracts.betRegistry.getOptionTitle(betHash, 0),
+    ).to.be.equal('Option 1');
   });
 });

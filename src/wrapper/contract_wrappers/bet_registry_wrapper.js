@@ -162,7 +162,19 @@ class BetRegistry {
     }
   }
 
-  // Setters
+  async addToOption(hash, option, number, sender) {
+    try {
+      return await this.instance.addToOption(
+        hash,
+        option,
+        number,
+        { from: sender },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
   async setPlayerBetReturned(hash, playerBetHash, player) {
     try {
       return await this.instance.setPlayerBetReturned(hash, playerBetHash, player);
@@ -171,7 +183,29 @@ class BetRegistry {
     }
   }
 
+  async setOptionTitle(hash, option, title, sender) {
+    try {
+      return await this.instance.setOptionTitle(
+        hash,
+        option,
+        title,
+        { from: sender },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
   // Getters
+  getPlayerBetHash(hash, player, option, number) {
+    return this.instance.getPlayerBetHash.call(
+      hash,
+      player,
+      option,
+      number,
+    );
+  }
+
   getBetKernelProxy(hash) {
     return this.instance.getBetKernelProxy.call(hash);
   }
