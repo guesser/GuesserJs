@@ -107,8 +107,6 @@ describe('Bet Registry testing', () => {
     expect(
       betPrincipal.toNumber(),
     ).to.be.equal(1);
-
-    expect().to.be.equal(1);
   });
 
   it('should allow to set the title of an option', async () => {
