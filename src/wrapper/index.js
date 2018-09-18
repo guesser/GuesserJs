@@ -2,6 +2,7 @@
 const BetRegistry = require('./contract_wrappers/bet_registry_wrapper.js');
 const ProxyRegistry = require('./contract_wrappers/proxy_registry_wrapper.js');
 const RegistrySetter = require('./contract_wrappers/registry_setter_wrapper.js');
+const BetPayments = require('./contract_wrappers/bet_payments_wrapper.js');
 
 // Proxy Contracts
 const ERC20BetKernelProxy = require('./contract_wrappers/bet_kernel_proxies/ERC20_bet_kernel_proxy.js');
@@ -19,6 +20,7 @@ class Wrappers {
     this.betRegistry = new BetRegistry(web3);
     this.proxyRegistry = new ProxyRegistry(web3);
     this.registrySetter = new RegistrySetter(web3);
+    this.betPayments = new BetPayments(web3);
 
     // Proxy Contracts
     this.ERC20BetKernelProxy = new ERC20BetKernelProxy(web3);
@@ -35,6 +37,7 @@ class Wrappers {
     await this.betRegistry.init();
     await this.proxyRegistry.init();
     await this.registrySetter.init();
+    await this.betPayments.init();
 
     // Proxy Contracts
     await this.ERC20BetKernelProxy.init();

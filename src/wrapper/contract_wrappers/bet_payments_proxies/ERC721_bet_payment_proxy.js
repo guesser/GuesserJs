@@ -21,7 +21,7 @@ class ERC721BetPaymentProxy {
     return this.web3.eth.net.getNetworkType();
   }
 
-  async address() {
+  address() {
     return this.instance.address;
   }
 }
