@@ -49,7 +49,7 @@ class BetKernel {
 
   async placeBet(betHash, option, number, sender) {
     try {
-      const playerBetHash = this.instance.placeBet.call(
+      const playerBetHash = await this.instance.placeBet.call(
         betHash,
         option,
         number,
