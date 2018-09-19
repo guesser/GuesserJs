@@ -59,7 +59,7 @@ class BetPayments {
         owner,
         to,
         profit,
-        { from: sender },
+        { from: sender, gas: 1000000 },
       );
     } catch (err) {
       throw err;
@@ -73,7 +73,7 @@ class BetPayments {
         token,
         to,
         profit,
-        { from: sender },
+        { from: sender, gas: 1000000 },
       );
     } catch (err) {
       throw err;

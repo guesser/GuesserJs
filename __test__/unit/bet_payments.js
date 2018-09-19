@@ -60,7 +60,7 @@ describe('Bet Payments testing', () => {
     ).to.be.equal(betRegistryAddress);
   });
 
-  it('should tell the amount the creator has', async () => {
+  it('should tell the amount a player has', async () => {
     const creatorAmount = await guesser.contracts.betPayments.balanceOf(
       guesser.contracts.ERC20BetPaymentProxy.address(),
       dummyTokenInstance.address,
@@ -106,28 +106,25 @@ describe('Bet Payments testing', () => {
       accounts[0],
     );
 
-    console.log('HOLA');
-    console.log('HOLA');
-
     const paymentsBalance = await dummyTokenInstance.balanceOf(
       guesser.contracts.betPayments.address(),
     );
 
     expect(
       paymentsBalance.toNumber(),
-    ).to.be.equal(1);
+    ).to.be.equal(5);
   });
 
   it('should allow to transfer to other accounts', async () => {
     await guesser.contracts.betPayments.transfer(
-      await guesser.contracts.ERC20BetPaymentProxy.address(),
-      await dummyTokenInstance.address,
-      accounts[1],
+      guesser.contracts.ERC20BetPaymentProxy.address(),
+      dummyTokenInstance.address,
+      accounts[3],
       5,
       accounts[0],
     );
 
-    const winnerBalance = await dummyTokenInstance.balanceOf(accounts[1]);
+    const winnerBalance = await dummyTokenInstance.balanceOf(accounts[3]);
 
     expect(
       winnerBalance.toNumber(),
