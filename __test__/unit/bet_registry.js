@@ -106,7 +106,7 @@ describe('Bet Registry testing', () => {
     ).to.be.equal(1);
     expect(
       betPrincipal.toNumber(),
-    ).to.be.equal(1);
+    ).to.be.equal(0); // Not 1 because that should be handled by the proxy
   });
 
   it('should allow to set the title of an option', async () => {

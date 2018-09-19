@@ -21,27 +21,26 @@ describe('Bet Payments testing', () => {
     await guesser.init();
 
     // Deploying the fake token
-    const dummyToken = contract(contracts.DummyERC721Token);
+    const dummyToken = contract(contracts.DummyToken);
     dummyToken.setProvider(web3.eth.currentProvider.host);
     dummyTokenInstance = await dummyToken.new(
-      5,
-      'DummyToken',
-      'DMT',
+      "DummyToken",
+      "DMT",
+      10,
+      10,
       { from: accounts[0] },
     );
 
-    await dummyTokenInstance.transferFrom(
-      accounts[0],
+    await dummyTokenInstance.setBalance(
       accounts[1],
-      0,
-      { from: accounts[0], gas: 1000000 },
+      5,
+      { from: accounts[0] },
     );
 
-    await dummyTokenInstance.transferFrom(
-      accounts[0],
+    await dummyTokenInstance.setBalance(
       accounts[2],
-      1,
-      { from: accounts[0], gas: 1000000 },
+      5,
+      { from: accounts[0] },
     );
   });
 
@@ -63,27 +62,27 @@ describe('Bet Payments testing', () => {
 
   it('should tell the amount the creator has', async () => {
     const creatorAmount = await guesser.contracts.betPayments.balanceOf(
-      guesser.contracts.ERC721BetPaymentProxy.address(),
+      guesser.contracts.ERC20BetPaymentProxy.address(),
       dummyTokenInstance.address,
       accounts[1],
     );
     expect(
       creatorAmount.toNumber(),
-    ).to.be.equal(1);
+    ).to.be.equal(5);
   });
 
   it('should allow to approve to other accounts', async () => {
     await dummyTokenInstance.approve(
       guesser.contracts.betPayments.address(),
-      0,
+      5,
       { from: accounts[1] },
     );
 
     const creatorAmount = await guesser.contracts.betPayments.allowance(
-      guesser.contracts.ERC721BetPaymentProxy.address(),
+      guesser.contracts.ERC20BetPaymentProxy.address(),
       dummyTokenInstance.address,
       accounts[1],
-      0,
+      5,
     );
 
     expect(
@@ -99,15 +98,16 @@ describe('Bet Payments testing', () => {
 
   it('should allow transfering the tokens to the payments contract', async () => {
     await guesser.contracts.betPayments.transferFrom(
-      guesser.contracts.ERC721BetPaymentProxy.address(),
+      guesser.contracts.ERC20BetPaymentProxy.address(),
       dummyTokenInstance.address,
       accounts[1],
       guesser.contracts.betPayments.address(),
-      0,
+      5,
       accounts[0],
     );
 
-    console.log('Hola');
+    console.log('HOLA');
+    console.log('HOLA');
 
     const paymentsBalance = await dummyTokenInstance.balanceOf(
       guesser.contracts.betPayments.address(),

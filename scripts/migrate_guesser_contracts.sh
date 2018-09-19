@@ -14,6 +14,10 @@ cd $GUESSER_SMART_CONTRACTS
 
 sleep 3
 
+npm install
+
+sleep 3
+
 echo -e "${CYAN}Installing Guesser contract deployment dependencies...${NO_COLOR}"
 npm install >> $LOGS 2>&1
 echo -e "\n"
