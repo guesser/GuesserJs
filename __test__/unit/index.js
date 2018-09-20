@@ -5,6 +5,7 @@ require('./proxy_registry.js');
 require('./registry_setter.js');
 require('./bet_kernel.js');
 require('./bet_payments.js');
+require('./bet_oracle.js');
 require('./bet_terms.js');
 
 // Proxies
