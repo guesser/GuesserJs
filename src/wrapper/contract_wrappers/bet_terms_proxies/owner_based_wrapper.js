@@ -25,6 +25,26 @@ class OwnerBasedTermsProxy {
     return this.instance.address;
   }
 
+// Registry Setter
+  async setBetRegistry(address, sender) {
+    try {
+      await this.instance.setBetRegistry(
+        address,
+        { from: sender },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  betRegistry() {
+    return this.instance.betRegistry.call();
+  }
+
+  paused() {
+    return this.instance.paused.call();
+  }
+
   getTermsHash() {
     return this.instance.getTermsHash.call();
   }
