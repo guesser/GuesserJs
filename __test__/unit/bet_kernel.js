@@ -11,6 +11,9 @@ describe('Bet Kernel testing', () => {
   let betHash;
   let dummyTokenInstance;
 
+  let playerBetHash1;
+  let playerBetHash2;
+
   before(async () => {
     const web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
     web3 = new Web3(web3Provider);
@@ -84,33 +87,71 @@ describe('Bet Kernel testing', () => {
 
 
   it('should allow to place a bet from a user', async () => {
-    let playerBetHash1 = await guesser.contracts.betKernel.placeBet(
+    await dummyTokenInstance.approve(
+      guesser.contracts.betPayments.address(),
+      5,
+      { from: accounts[1] },
+    );
+
+    await dummyTokenInstance.approve(
+      guesser.contracts.betPayments.address(),
+      5,
+      { from: accounts[2] },
+    );
+
+    await guesser.contracts.betRegistry.setOptionTitle(
+      betHash,
+      0,
+      "Option1",
+      accounts[0],
+    );
+
+    await guesser.contracts.betRegistry.setOptionTitle(
+      betHash,
+      1,
+      "Option2",
+      accounts[0],
+  );
+
+    playerBetHash1 = await guesser.contracts.betKernel.placeBet(
       betHash,
       0,
       1,
       accounts[1],
     );
-    console.log(playerBetHash);
 
-    let playerBetHash = await guesser.contracts.betKernel.placeBet(
+    playerBetHash2 = await guesser.contracts.betKernel.placeBet(
       betHash,
-      0,
+      1,
       1,
       accounts[2],
     );
-    console.log(playerBetHash);
-
 
     const betPrincipal = await guesser.contracts.betRegistry
       .getTotalPrincipal(betHash);
 
     expect(
-      playerBetPrincipal.toNumber(),
+      betPrincipal.toNumber(),
     ).to.be.equal(2);
   });
 
+  it("should return the parameters of the player bet", async () => {
+    const option = await guesser.contracts.betRegistry.getPlayerBetOption(
+      betHash,
+      playerBetHash1,
+    );
+    expect(
+      option.toNumber(),
+    ).to.be.equal(0);
+    expect(
+      await guesser.contracts.betRegistry.getPlayerBetPlayer(
+        betHash,
+        playerBetHash1,
+      ),
+    ).to.be.equal(accounts[1]);
+  });
 
   it('should allow to get the profits from a bet', async () => {
-    // TODO: This
+    // TODO: This needs the bet oracle wrapper to be done
   });
 });

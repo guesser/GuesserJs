@@ -27,7 +27,7 @@ describe('Bet Payments testing', () => {
       "DummyToken",
       "DMT",
       10,
-      10,
+      15,
       { from: accounts[0] },
     );
 
