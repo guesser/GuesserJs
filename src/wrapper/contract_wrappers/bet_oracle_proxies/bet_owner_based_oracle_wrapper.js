@@ -25,11 +25,27 @@ class BetOwnerBasedOracle {
     return this.instance.address;
   }
 
-  outcomeReady() {
+  // Registry Setter
+  async setBetRegistry(address, sender) {
+    try {
+      await this.instance.setBetRegistry(
+        address,
+        { from: sender },
+      );
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  betRegistry() {
+    return this.instance.betRegistry.call();
+  }
+
+  outcomeReady(betHash) {
     return this.instance.outcomeReady.call(betHash);
   }
 
-  getOutcome() {
+  getOutcome(betHash) {
     return this.instance.getOutcome.call(betHash);
   }
 
