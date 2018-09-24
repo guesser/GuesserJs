@@ -11,6 +11,7 @@ describe('Bet Kernel testing', () => {
   let betHash;
   let dummyTokenInstance;
 
+  let betTermsHash;
   let playerBetHash1;
   let playerBetHash2;
 
@@ -48,10 +49,10 @@ describe('Bet Kernel testing', () => {
 
     const betKernelProxyAddress = await guesser.contracts.ERC20BetKernelProxy.address();
     const betPaymentsProxyAddress = await guesser.contracts.ERC20BetPaymentProxy.address();
-    const betOracleProxyAddress = await guesser.contracts.betOwnerBasedOracle.address();
+    const betOracleProxyAddress = await guesser.contracts.ownerBasedOracle.address();
     const betTermsProxyAddress = await guesser.contracts.ownerBasedTermsProxy.address();
     // Here we should ask for the hash of the terms
-    const betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
+    betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
     await guesser.contracts.ownerBasedTermsProxy.setTermsHash(
       betTermsHash,
       accounts[0],
@@ -67,6 +68,10 @@ describe('Bet Kernel testing', () => {
       betTermsProxyAddress,
       betTermsHash,
       title,
+      accounts[0],
+    );
+    await guesser.contracts.ownerBasedTermsProxy.setBetRegistry(
+      guesser.contracts.betRegistry.address(),
       accounts[0],
     );
   });
@@ -152,6 +157,41 @@ describe('Bet Kernel testing', () => {
   });
 
   it('should allow to get the profits from a bet', async () => {
-    // TODO: This needs the bet oracle wrapper to be done
+    await guesser.contracts.ownerBasedOracle.setOutcomeReady(
+      betHash, 
+      true,
+      accounts[0],
+    );
+    await guesser.contracts.ownerBasedOracle.setOutcome(
+      betHash,
+      0,
+      accounts[0],
+    );
+    await guesser.contracts.betTerms.changePeriod(
+      guesser.contracts.ownerBasedTermsProxy.address(),
+      betTermsHash,
+      2,
+      accounts[0],
+    );
+
+    expect(
+      await guesser.contracts.betRegistry.getPlayerBetReturned(
+        betHash,
+        playerBetHash1,
+      ),
+    ).to.be.equal(false);
+
+    await guesser.contracts.betKernel.getProfits(
+      betHash,
+      playerBetHash1,
+      accounts[1],
+    );
+
+    expect(
+      await guesser.contracts.betRegistry.getPlayerBetReturned(
+        betHash,
+        playerBetHash1,
+      ),
+    ).to.be.equal(true);
   });
 });
