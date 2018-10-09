@@ -52,7 +52,7 @@ describe('Bet Kernel testing', () => {
     const betOracleProxyAddress = await guesser.contracts.ownerBasedOracle.address();
     const betTermsProxyAddress = await guesser.contracts.ownerBasedTermsProxy.address();
     // Here we should ask for the hash of the terms
-    betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
+    betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash('');
     await guesser.contracts.ownerBasedTermsProxy.setTermsHash(
       betTermsHash,
       accounts[0],

@@ -38,7 +38,7 @@ describe('Owner Based Oracle Proxy', () => {
     const betOracleProxyAddress = await guesser.contracts.ownerBasedOracle.address();
     const betTermsProxyAddress = await guesser.contracts.ownerBasedTermsProxy.address();
     // Here we should ask for the hash of the terms
-    const betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
+    const betTermsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash('');
     await guesser.contracts.ownerBasedTermsProxy.setTermsHash(
       betTermsHash,
       accounts[0],

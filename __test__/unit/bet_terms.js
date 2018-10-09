@@ -18,7 +18,7 @@ describe('Bet Terms testing', () => {
     guesser = new Guesser(web3);
     await guesser.init();
 
-    termsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
+    termsHash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash('');
 
     await guesser.contracts.ownerBasedTermsProxy.setTermsHash(
       termsHash,

@@ -1,17 +1,17 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class OwnerBasedTermsProxy {
+class TimeBasedTerms {
   constructor(web3) {
     this.web3 = web3;
-    this.OwnerBasedTermsProxy = contract(contracts.OwnerBased);
-    this.OwnerBasedTermsProxy.setProvider(this.web3.eth.currentProvider.host);
+    this.TimeBasedTermsProxy = contract(contracts.TimeBasedTerms);
+    this.TimeBasedTermsProxy.setProvider(this.web3.eth.currentProvider.host);
     this.instance = null;
   }
 
   async init() {
     try {
-      this.instance = await this.OwnerBasedTermsProxy.deployed();
+      this.instance = await this.TimeBasedTermsProxy.deployed();
     } catch (err) {
       throw err;
     }

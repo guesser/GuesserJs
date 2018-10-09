@@ -28,7 +28,7 @@ describe('Owner Based Terms Proxy', () => {
 
   it('should be able to create a bet terms', async () => {
     const betTermsNumber = await guesser.contracts.ownerBasedTermsProxy.betsNumber();
-    const hash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash();
+    const hash = await guesser.contracts.ownerBasedTermsProxy.getTermsHash('');
     await guesser.contracts.ownerBasedTermsProxy.setTermsHash(
       hash,
       accounts[0],
