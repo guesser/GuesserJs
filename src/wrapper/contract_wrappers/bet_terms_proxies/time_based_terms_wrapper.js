@@ -46,25 +46,24 @@ class TimeBasedTerms {
   }
 
   getTermsHash(content) {
-    let hex = this.web3.utils.utf8ToHex(content)
-    let bytesArr = []
-    bytesArr.push(hex)
-
-    return this.instance.getTermsHash.call(bytesArr);
+    return this.instance.getTermsHash.call(content);
   }
 
-  betsNumber() {
-    return this.instance.betsNumber.call();
+  uintToBytes32(number) {
+    return this.instance.uintToBytes32.call(number);
   }
 
-  async setTermsHash(hash, sender) {
-    let bytesArr = []
-    bytesArr.push(hash)
-    await this.instance.setTermsHash(
-      bytesArr,
+  async setTermsHash(terms, sender) {
+    let result = await this.instance.setTermsHash.call(
+      terms,
       { from: sender },
     );
+    await this.instance.setTermsHash(
+      terms,
+      { from: sender },
+    );
+    return result;
   }
 }
 
-module.exports = OwnerBasedTermsProxy;
+module.exports = TimeBasedTerms;

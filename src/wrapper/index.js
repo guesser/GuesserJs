@@ -15,6 +15,7 @@ const ERC721BetPaymentProxy = require('./contract_wrappers/bet_payments_proxies/
 const BetOwnerBasedOracle = require('./contract_wrappers/bet_oracle_proxies/bet_owner_based_oracle_wrapper.js');
 const OwnerBasedOracle = require('./contract_wrappers/bet_oracle_proxies/owner_based_oracle_wrapper.js');
 const OwnerBasedTermsProxy = require('./contract_wrappers/bet_terms_proxies/owner_based_wrapper.js');
+const TimeBasedTermsProxy = require('./contract_wrappers/bet_terms_proxies/time_based_terms_wrapper.js');
 
 class Wrappers {
   constructor(web3) {
@@ -36,6 +37,7 @@ class Wrappers {
     this.betOwnerBasedOracle = new BetOwnerBasedOracle(web3);
     this.ownerBasedOracle = new OwnerBasedOracle(web3);
     this.ownerBasedTermsProxy = new OwnerBasedTermsProxy(web3);
+    this.timeBasedTermsProxy = new TimeBasedTermsProxy(web3);
   }
 
   async init() {
@@ -56,6 +58,7 @@ class Wrappers {
     await this.betOwnerBasedOracle.init();
     await this.ownerBasedOracle.init();
     await this.ownerBasedTermsProxy.init();
+    await this.timeBasedTermsProxy.init();
   }
 }
 
