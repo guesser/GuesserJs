@@ -46,6 +46,47 @@ class BetKernel {
   }
 
   // Bet Kernel
+  async createBet(
+    kernelProxy,
+    paymentsProxy,
+    paymentsToken,
+    oracleProxy,
+    termsProxy,
+    terms,
+    title,
+    sender,
+  ) {
+    const salt = Math.random() * 9007199254740991; // Js max number
+    try {
+      const betResult = await this.instance.createBet.call(
+        kernelProxy,
+        paymentsProxy,
+        paymentsToken,
+        oracleProxy,
+        termsProxy,
+        terms,
+        title,
+        salt,
+        { from: sender },
+      );
+
+      await this.instance.createBet(
+        kernelProxy,
+        paymentsProxy,
+        paymentsToken,
+        oracleProxy,
+        termsProxy,
+        terms,
+        title,
+        salt,
+        { from: sender },
+      );
+
+      return betResult;
+    } catch (err) {
+      throw err;
+    }
+  }
 
   async placeBet(betHash, option, number, sender) {
     try {
