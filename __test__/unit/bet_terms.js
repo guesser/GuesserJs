@@ -1,7 +1,5 @@
 const { expect } = require('chai');
 const Web3 = require('web3');
-const contracts = require('guesser-contracts');
-const contract = require('truffle-contract');
 const Guesser = require('../../src/index');
 
 describe('Bet Terms testing', () => {
@@ -31,7 +29,7 @@ describe('Bet Terms testing', () => {
     );
   });
 
-  it("should be in the participation period", async () => {
+  it('should be in the participation period', async () => {
     expect(
       await guesser.contracts.betTerms.participationPeriod(
         guesser.contracts.ownerBasedTermsProxy.address(),
@@ -40,7 +38,7 @@ describe('Bet Terms testing', () => {
     ).to.be.equal(true);
   });
 
-  it("should let the owner change to any state", async () => {
+  it('should let the owner change to any state', async () => {
     await guesser.contracts.betTerms.changePeriod(
       guesser.contracts.ownerBasedTermsProxy.address(),
       termsHash,

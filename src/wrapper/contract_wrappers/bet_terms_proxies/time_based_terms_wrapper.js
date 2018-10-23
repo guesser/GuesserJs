@@ -25,7 +25,7 @@ class TimeBasedTerms {
     return this.instance.address;
   }
 
-// Registry Setter
+  // Registry Setter
   async setBetRegistry(address, sender) {
     try {
       await this.instance.setBetRegistry(
@@ -54,7 +54,7 @@ class TimeBasedTerms {
   }
 
   async setTermsHash(terms, sender) {
-    let result = await this.instance.setTermsHash.call(
+    const result = await this.instance.setTermsHash.call(
       terms,
       { from: sender },
     );

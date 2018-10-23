@@ -11,9 +11,7 @@ describe('Basic Mutual Integration', () => {
   let betHash;
   let dummyTokenInstance;
 
-  let betTermsHash;
   let playerBetHash1;
-  let playerBetHash2;
 
   before(async () => {
     const web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
@@ -28,8 +26,8 @@ describe('Basic Mutual Integration', () => {
     const dummyToken = contract(contracts.DummyToken);
     dummyToken.setProvider(web3.eth.currentProvider.host);
     dummyTokenInstance = await dummyToken.new(
-      "DummyToken",
-      "DMT",
+      'DummyToken',
+      'DMT',
       10,
       15,
       { from: accounts[0] },
@@ -67,21 +65,20 @@ describe('Basic Mutual Integration', () => {
 
     let startTime = await web3.eth.getBlock(await web3.eth.getBlockNumber());
     startTime = await startTime.timestamp;
-    var terms = [
+    const terms = [
       await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 10)),
       await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 20)),
       await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 30)),
     ];
 
-    let betResult = await guesser.helper.createBasicMutualBet(
+    const betResult = await guesser.helper.createBasicMutualBet(
       dummyTokenInstance.address,
       terms,
       title,
       accounts[0],
     );
 
-    betHash = betResult[0];
-    termsHash = betResult[1];
+    [betHash] = betResult;
   });
 
   it('should allow to place a bet from a user', async () => {
@@ -100,29 +97,22 @@ describe('Basic Mutual Integration', () => {
     await guesser.contracts.betRegistry.setOptionTitle(
       betHash,
       0,
-      "Option1",
+      'Option1',
       accounts[0],
     );
 
     await guesser.contracts.betRegistry.setOptionTitle(
       betHash,
       1,
-      "Option2",
+      'Option2',
       accounts[0],
-  );
+    );
 
     playerBetHash1 = await guesser.contracts.betKernel.placeBet(
       betHash,
       0,
       1,
       accounts[1],
-    );
-
-    playerBetHash2 = await guesser.contracts.betKernel.placeBet(
-      betHash,
-      1,
-      1,
-      accounts[2],
     );
 
     const betPrincipal = await guesser.contracts.betRegistry
@@ -133,7 +123,7 @@ describe('Basic Mutual Integration', () => {
     ).to.be.equal(2);
   });
 
-  it("should return the parameters of the player bet", async () => {
+  it('should return the parameters of the player bet', async () => {
     const option = await guesser.contracts.betRegistry.getPlayerBetOption(
       betHash,
       playerBetHash1,

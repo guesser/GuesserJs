@@ -49,7 +49,7 @@ class BetOracle {
   outcomeReady(proxy, betHash) {
     return this.instance.outcomeReady.call(proxy, betHash);
   }
-  
+
   getOutcome(proxy, betHash) {
     return this.instance.getOutcome.call(proxy, betHash);
   }

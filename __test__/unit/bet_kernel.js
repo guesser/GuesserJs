@@ -13,7 +13,6 @@ describe('Bet Kernel testing', () => {
 
   let betTermsHash;
   let playerBetHash1;
-  let playerBetHash2;
 
   before(async () => {
     const web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
@@ -28,8 +27,8 @@ describe('Bet Kernel testing', () => {
     const dummyToken = contract(contracts.DummyToken);
     dummyToken.setProvider(web3.eth.currentProvider.host);
     dummyTokenInstance = await dummyToken.new(
-      "DummyToken",
-      "DMT",
+      'DummyToken',
+      'DMT',
       10,
       15,
       { from: accounts[0] },
@@ -107,29 +106,22 @@ describe('Bet Kernel testing', () => {
     await guesser.contracts.betRegistry.setOptionTitle(
       betHash,
       0,
-      "Option1",
+      'Option1',
       accounts[0],
     );
 
     await guesser.contracts.betRegistry.setOptionTitle(
       betHash,
       1,
-      "Option2",
+      'Option2',
       accounts[0],
-  );
+    );
 
     playerBetHash1 = await guesser.contracts.betKernel.placeBet(
       betHash,
       0,
       1,
       accounts[1],
-    );
-
-    playerBetHash2 = await guesser.contracts.betKernel.placeBet(
-      betHash,
-      1,
-      1,
-      accounts[2],
     );
 
     const betPrincipal = await guesser.contracts.betRegistry
@@ -140,7 +132,7 @@ describe('Bet Kernel testing', () => {
     ).to.be.equal(2);
   });
 
-  it("should return the parameters of the player bet", async () => {
+  it('should return the parameters of the player bet', async () => {
     const option = await guesser.contracts.betRegistry.getPlayerBetOption(
       betHash,
       playerBetHash1,
@@ -158,7 +150,7 @@ describe('Bet Kernel testing', () => {
 
   it('should allow to get the profits from a bet', async () => {
     await guesser.contracts.ownerBasedOracle.setOutcomeReady(
-      betHash, 
+      betHash,
       true,
       accounts[0],
     );

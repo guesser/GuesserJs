@@ -25,7 +25,7 @@ class OwnerBasedTermsProxy {
     return this.instance.address;
   }
 
-// Registry Setter
+  // Registry Setter
   async setBetRegistry(address, sender) {
     try {
       await this.instance.setBetRegistry(
@@ -46,9 +46,9 @@ class OwnerBasedTermsProxy {
   }
 
   getTermsHash(content) {
-    let hex = this.web3.utils.utf8ToHex(content)
-    let bytesArr = []
-    bytesArr.push(hex)
+    const hex = this.web3.utils.utf8ToHex(content);
+    const bytesArr = [];
+    bytesArr.push(hex);
 
     return this.instance.getTermsHash.call(bytesArr);
   }
@@ -58,8 +58,8 @@ class OwnerBasedTermsProxy {
   }
 
   async setTermsHash(hash, sender) {
-    let bytesArr = []
-    bytesArr.push(hash)
+    const bytesArr = [];
+    bytesArr.push(hash);
     await this.instance.setTermsHash(
       bytesArr,
       { from: sender },

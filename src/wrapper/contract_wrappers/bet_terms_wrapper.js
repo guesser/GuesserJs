@@ -49,7 +49,7 @@ class BetTerms {
   participationPeriod(termsProxy, termsHash) {
     return this.instance.participationPeriod.call(
       termsProxy,
-      termsHash
+      termsHash,
     );
   }
 
@@ -77,7 +77,6 @@ class BetTerms {
       throw err;
     }
   }
-
 }
 
 module.exports = BetTerms;

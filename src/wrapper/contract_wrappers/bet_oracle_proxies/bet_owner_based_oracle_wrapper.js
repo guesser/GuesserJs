@@ -54,7 +54,7 @@ class BetOwnerBasedOracle {
       await this.instance.setOutcomeReady(
         betHash,
         state,
-        { from: sender }
+        { from: sender },
       );
     } catch (err) {
       throw err;
@@ -66,7 +66,7 @@ class BetOwnerBasedOracle {
       await this.instance.setOutcome(
         betHash,
         outcome,
-        { from: sender }
+        { from: sender },
       );
     } catch (err) {
       throw err;

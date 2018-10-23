@@ -29,16 +29,13 @@ describe('Time Based Terms Proxy', () => {
   it('should be able to create a bet terms', async () => {
     let startTime = await web3.eth.getBlock(await web3.eth.getBlockNumber());
     startTime = await startTime.timestamp;
-    var terms = [
+    const terms = [
       await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 10)),
       await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 20)),
-      await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 30))
+      await guesser.contracts.timeBasedTermsProxy.uintToBytes32(startTime + (60 * 30)),
     ];
 
-    const termsHash = await guesser.contracts.timeBasedTermsProxy.getTermsHash(
-      terms
-    );
-    let termsSet = await guesser.contracts.timeBasedTermsProxy.setTermsHash(
+    const termsSet = await guesser.contracts.timeBasedTermsProxy.setTermsHash(
       terms,
       accounts[0],
     );

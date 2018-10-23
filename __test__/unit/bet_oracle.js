@@ -8,7 +8,6 @@ describe('Bet Oracle testing', () => {
   let guesser;
   let web3;
   let accounts;
-  let termsHash;
   let betHash;
 
   before(async () => {
@@ -68,7 +67,7 @@ describe('Bet Oracle testing', () => {
   });
   it('shoud tell the outcome of the oracle', async () => {
     await guesser.contracts.ownerBasedOracle.setOutcomeReady(
-      betHash, 
+      betHash,
       true,
       accounts[0],
     );

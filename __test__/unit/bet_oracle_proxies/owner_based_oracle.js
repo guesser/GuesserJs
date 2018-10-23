@@ -68,8 +68,8 @@ describe('Owner Based Oracle Proxy', () => {
 
   it('should tell that the outcome is not ready', async () => {
     const outcomeReady = await guesser.contracts.ownerBasedOracle.outcomeReady(
-        betHash,
-        accounts[0],
+      betHash,
+      accounts[0],
     );
     expect(
       outcomeReady,
@@ -97,7 +97,7 @@ describe('Owner Based Oracle Proxy', () => {
     );
 
     const outcome = await guesser.contracts.ownerBasedOracle.getOutcome(
-        betHash,
+      betHash,
     );
     expect(
       outcome.toNumber(),

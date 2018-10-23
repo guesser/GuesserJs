@@ -24,8 +24,8 @@ describe('Bet Payments testing', () => {
     const dummyToken = contract(contracts.DummyToken);
     dummyToken.setProvider(web3.eth.currentProvider.host);
     dummyTokenInstance = await dummyToken.new(
-      "DummyToken",
-      "DMT",
+      'DummyToken',
+      'DMT',
       10,
       15,
       { from: accounts[0] },
