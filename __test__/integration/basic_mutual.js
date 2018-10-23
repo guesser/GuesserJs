@@ -10,7 +10,6 @@ describe('Basic Mutual Integration', () => {
   let accounts;
   let betHash;
   let dummyTokenInstance;
-
   let playerBetHash1;
 
   before(async () => {
@@ -78,7 +77,7 @@ describe('Basic Mutual Integration', () => {
       accounts[0],
     );
 
-    [betHash] = betResult;
+    betHash = betResult['0'];
   });
 
   it('should allow to place a bet from a user', async () => {
@@ -113,6 +112,13 @@ describe('Basic Mutual Integration', () => {
       0,
       1,
       accounts[1],
+    );
+
+    await guesser.contracts.betKernel.placeBet(
+      betHash,
+      1,
+      1,
+      accounts[2],
     );
 
     const betPrincipal = await guesser.contracts.betRegistry

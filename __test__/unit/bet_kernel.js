@@ -124,6 +124,13 @@ describe('Bet Kernel testing', () => {
       accounts[1],
     );
 
+    await guesser.contracts.betKernel.placeBet(
+      betHash,
+      1,
+      1,
+      accounts[2],
+    );
+
     const betPrincipal = await guesser.contracts.betRegistry
       .getTotalPrincipal(betHash);
 
