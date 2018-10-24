@@ -2,7 +2,9 @@ const chai = require('chai');
 const Web3 = require('web3');
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
-const Guesser = require('../../../src/index');
+let Guesser = require('../../../build/').default;
+
+Guesser = Guesser.default;
 
 const { expect } = chai;
 

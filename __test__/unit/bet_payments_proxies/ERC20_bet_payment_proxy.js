@@ -2,7 +2,9 @@ const chai = require('chai');
 
 const { expect } = chai;
 const Web3 = require('web3');
-const Guesser = require('../../../src/index');
+let Guesser = require('../../../build/').default;
+
+Guesser = Guesser.default;
 
 describe('ERC20 Bet Payment Proxy testing', () => {
   let guesser;

@@ -5,7 +5,6 @@ const contract = require('truffle-contract');
 let Guesser = require('../../build/').default;
 
 Guesser = Guesser.default;
-console.log(Guesser);
 
 describe('Basic Mutual Integration', () => {
   let guesser;

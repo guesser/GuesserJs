@@ -1,6 +1,8 @@
 const { expect } = require('chai');
 const Web3 = require('web3');
-const Guesser = require('../../src/index');
+let Guesser = require('../../build/').default;
+
+Guesser = Guesser.default;
 
 describe('Proxy Registry testing', () => {
   let guesser;
