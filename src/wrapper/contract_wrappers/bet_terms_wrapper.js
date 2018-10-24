@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class BetTerms {
+export default class BetTerms {
   constructor(web3) {
     this.web3 = web3;
     this.betTerms = contract(contracts.BetTerms);
-    this.betTerms.setProvider(this.web3.eth.currentProvider.host);
+    this.betTerms.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -78,5 +78,3 @@ class BetTerms {
     }
   }
 }
-
-module.exports = BetTerms;

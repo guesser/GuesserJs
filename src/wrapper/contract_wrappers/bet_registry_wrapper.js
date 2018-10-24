@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class BetRegistry {
+export default class BetRegistry {
   constructor(web3) {
     this.web3 = web3;
     this.betRegistry = contract(contracts.BetRegistry);
-    this.betRegistry.setProvider(this.web3.eth.currentProvider.host);
+    this.betRegistry.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -282,5 +282,3 @@ class BetRegistry {
     return this.instance.isAuthorised.call(sender);
   }
 }
-
-module.exports = BetRegistry;

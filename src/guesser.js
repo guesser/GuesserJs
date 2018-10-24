@@ -1,7 +1,7 @@
-const Wrappers = require('./wrapper/index.js');
-const Helper = require('./helper/index.js');
+import Wrappers from './wrapper/index';
+import Helper from './helper/index';
 
-class Guesser {
+export default class Guesser {
   constructor(Web3) {
     this.web3 = Web3;
     this.contracts = new Wrappers(this.web3);
@@ -13,5 +13,3 @@ class Guesser {
     await this.helper.init(this.contracts);
   }
 }
-
-module.exports = Guesser;

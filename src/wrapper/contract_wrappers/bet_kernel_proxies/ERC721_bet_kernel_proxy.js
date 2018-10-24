@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class ERC721BetKernelProxy {
+export default class ERC721BetKernelProxy {
   constructor(web3) {
     this.web3 = web3;
     this.ERC721BetKernelProxy = contract(contracts.ERC721BetKernelProxy);
-    this.ERC721BetKernelProxy.setProvider(this.web3.eth.currentProvider.host);
+    this.ERC721BetKernelProxy.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -25,5 +25,3 @@ class ERC721BetKernelProxy {
     return this.instance.address;
   }
 }
-
-module.exports = ERC721BetKernelProxy;

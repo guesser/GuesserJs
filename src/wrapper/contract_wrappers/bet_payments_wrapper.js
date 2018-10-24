@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class BetPayments {
+export default class BetPayments {
   constructor(web3) {
     this.web3 = web3;
     this.betPayments = contract(contracts.BetPayments);
-    this.betPayments.setProvider(this.web3.eth.currentProvider.host);
+    this.betPayments.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -84,5 +84,3 @@ class BetPayments {
     return this.instance.balanceOf.call(paymentsProxy, token, address);
   }
 }
-
-module.exports = BetPayments;

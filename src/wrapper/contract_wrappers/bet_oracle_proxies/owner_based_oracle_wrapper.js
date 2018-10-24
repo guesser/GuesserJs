@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class OwnerBasedOracle {
+export default class OwnerBasedOracle {
   constructor(web3) {
     this.web3 = web3;
     this.OwnerBasedOracle = contract(contracts.OwnerBasedOracle);
-    this.OwnerBasedOracle.setProvider(this.web3.eth.currentProvider.host);
+    this.OwnerBasedOracle.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -57,5 +57,3 @@ class OwnerBasedOracle {
     }
   }
 }
-
-module.exports = OwnerBasedOracle;

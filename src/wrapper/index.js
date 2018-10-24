@@ -1,23 +1,21 @@
-// Core Contracts
-const BetRegistry = require('./contract_wrappers/bet_registry_wrapper.js');
-const ProxyRegistry = require('./contract_wrappers/proxy_registry_wrapper.js');
-const RegistrySetter = require('./contract_wrappers/registry_setter_wrapper.js');
-const BetKernel = require('./contract_wrappers/bet_kernel_wrapper.js');
-const BetPayments = require('./contract_wrappers/bet_payments_wrapper.js');
-const BetOracle = require('./contract_wrappers/bet_oracle_wrapper.js');
-const BetTerms = require('./contract_wrappers/bet_terms_wrapper.js');
+import BetRegistry from './contract_wrappers/bet_registry_wrapper';
+import ProxyRegistry from './contract_wrappers/proxy_registry_wrapper';
+import RegistrySetter from './contract_wrappers/registry_setter_wrapper';
+import BetKernel from './contract_wrappers/bet_kernel_wrapper';
+import BetPayments from './contract_wrappers/bet_payments_wrapper';
+import BetOracle from './contract_wrappers/bet_oracle_wrapper';
+import BetTerms from './contract_wrappers/bet_terms_wrapper';
 
-// Proxy Contracts
-const ERC20BetKernelProxy = require('./contract_wrappers/bet_kernel_proxies/ERC20_bet_kernel_proxy.js');
-const ERC721BetKernelProxy = require('./contract_wrappers/bet_kernel_proxies/ERC721_bet_kernel_proxy.js');
-const ERC20BetPaymentProxy = require('./contract_wrappers/bet_payments_proxies/ERC20_bet_payment_proxy.js');
-const ERC721BetPaymentProxy = require('./contract_wrappers/bet_payments_proxies/ERC721_bet_payment_proxy.js');
-const BetOwnerBasedOracle = require('./contract_wrappers/bet_oracle_proxies/bet_owner_based_oracle_wrapper.js');
-const OwnerBasedOracle = require('./contract_wrappers/bet_oracle_proxies/owner_based_oracle_wrapper.js');
-const OwnerBasedTermsProxy = require('./contract_wrappers/bet_terms_proxies/owner_based_wrapper.js');
-const TimeBasedTermsProxy = require('./contract_wrappers/bet_terms_proxies/time_based_terms_wrapper.js');
+import ERC20BetKernelProxy from './contract_wrappers/bet_kernel_proxies/ERC20_bet_kernel_proxy';
+import ERC721BetKernelProxy from './contract_wrappers/bet_kernel_proxies/ERC721_bet_kernel_proxy';
+import ERC20BetPaymentProxy from './contract_wrappers/bet_payments_proxies/ERC20_bet_payment_proxy';
+import ERC721BetPaymentProxy from './contract_wrappers/bet_payments_proxies/ERC721_bet_payment_proxy';
+import BetOwnerBasedOracle from './contract_wrappers/bet_oracle_proxies/bet_owner_based_oracle_wrapper';
+import OwnerBasedOracle from './contract_wrappers/bet_oracle_proxies/owner_based_oracle_wrapper';
+import OwnerBasedTermsProxy from './contract_wrappers/bet_terms_proxies/owner_based_wrapper';
+import TimeBasedTermsProxy from './contract_wrappers/bet_terms_proxies/time_based_terms_wrapper';
 
-class Wrappers {
+export default class Wrappers {
   constructor(web3) {
     this.web3 = web3;
     // Core Contracts
@@ -61,5 +59,3 @@ class Wrappers {
     await this.timeBasedTermsProxy.init();
   }
 }
-
-module.exports = Wrappers;

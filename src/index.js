@@ -1,3 +1,3 @@
 const Guesser = require('./guesser');
 
-module.exports = Guesser;
+export default Guesser;

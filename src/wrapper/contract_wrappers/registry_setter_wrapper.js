@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class RegistrySetter {
+export default class RegistrySetter {
   constructor(web3) {
     this.web3 = web3;
     this.registrySetter = contract(contracts.RegistrySetter);
-    this.registrySetter.setProvider(this.web3.eth.currentProvider.host);
+    this.registrySetter.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -40,5 +40,3 @@ class RegistrySetter {
     return this.instance.betRegistry.call();
   }
 }
-
-module.exports = RegistrySetter;

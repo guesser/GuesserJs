@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class TimeBasedTerms {
+export default class TimeBasedTerms {
   constructor(web3) {
     this.web3 = web3;
     this.TimeBasedTermsProxy = contract(contracts.TimeBasedTerms);
-    this.TimeBasedTermsProxy.setProvider(this.web3.eth.currentProvider.host);
+    this.TimeBasedTermsProxy.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -65,5 +65,3 @@ class TimeBasedTerms {
     return result;
   }
 }
-
-module.exports = TimeBasedTerms;

@@ -1,4 +1,4 @@
-class CreateBasicMutual {
+export default class CreateBasicMutual {
   constructor() {
     this.contracts = null;
   }
@@ -20,4 +20,3 @@ class CreateBasicMutual {
     );
   }
 }
-module.exports = CreateBasicMutual;

@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class ProxyRegistry {
+export default class ProxyRegistry {
   constructor(web3) {
     this.web3 = web3;
     this.proxyRegistry = contract(contracts.ProxyRegistry);
-    this.proxyRegistry.setProvider(this.web3.eth.currentProvider.host);
+    this.proxyRegistry.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -91,5 +91,3 @@ class ProxyRegistry {
     );
   }
 }
-
-module.exports = ProxyRegistry;

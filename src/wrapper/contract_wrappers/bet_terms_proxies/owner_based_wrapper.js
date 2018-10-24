@@ -1,11 +1,11 @@
 const contracts = require('guesser-contracts');
 const contract = require('truffle-contract');
 
-class OwnerBasedTermsProxy {
+export default class OwnerBasedTermsProxy {
   constructor(web3) {
     this.web3 = web3;
     this.OwnerBasedTermsProxy = contract(contracts.OwnerBased);
-    this.OwnerBasedTermsProxy.setProvider(this.web3.eth.currentProvider.host);
+    this.OwnerBasedTermsProxy.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
@@ -66,5 +66,3 @@ class OwnerBasedTermsProxy {
     );
   }
 }
-
-module.exports = OwnerBasedTermsProxy;

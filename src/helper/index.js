@@ -1,6 +1,6 @@
-const CreateBasicMutual = require('./helper_functions/create_basic_mutual.js');
+import CreateBasicMutual from './helper_functions/create_basic_mutual';
 
-class Helpers {
+export default class Helpers {
   constructor() {
     this.createBasicMutual = new CreateBasicMutual();
   }
@@ -18,4 +18,3 @@ class Helpers {
     );
   }
 }
-module.exports = Helpers;
