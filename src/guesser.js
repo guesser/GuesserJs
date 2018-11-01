@@ -6,10 +6,14 @@ export default class Guesser {
     this.web3 = Web3;
     this.contracts = new Wrappers(this.web3);
     this.helper = new Helper();
+    this.initialized = false;
   }
 
   async init() {
-    await this.contracts.init();
-    await this.helper.init(this.contracts);
+    if (!this.initialized) {
+      await this.contracts.init();
+      await this.helper.init(this.contracts);
+      this.initialized = true;
+    }
   }
 }
