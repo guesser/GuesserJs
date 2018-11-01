@@ -5,12 +5,12 @@ export default class ProxyRegistry {
   constructor(web3) {
     this.web3 = web3;
     this.proxyRegistry = contract(contracts.ProxyRegistry);
-    this.proxyRegistry.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
   async init() {
     try {
+      await this.proxyRegistry.setProvider(this.web3.eth.currentProvider);
       this.instance = await this.proxyRegistry.deployed();
     } catch (err) {
       throw err;

@@ -5,12 +5,12 @@ export default class ERC20BetPaymentProxy {
   constructor(web3) {
     this.web3 = web3;
     this.ERC20BetPaymentProxy = contract(contracts.ERC20PaymentProxy);
-    this.ERC20BetPaymentProxy.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
   async init() {
     try {
+      await this.ERC20BetPaymentProxy.setProvider(this.web3.eth.currentProvider);
       this.instance = await this.ERC20BetPaymentProxy.deployed();
     } catch (err) {
       throw err;

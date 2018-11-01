@@ -5,12 +5,12 @@ export default class TimeBasedTerms {
   constructor(web3) {
     this.web3 = web3;
     this.TimeBasedTermsProxy = contract(contracts.TimeBasedTerms);
-    this.TimeBasedTermsProxy.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
   async init() {
     try {
+      await this.TimeBasedTermsProxy.setProvider(this.web3.eth.currentProvider);
       this.instance = await this.TimeBasedTermsProxy.deployed();
     } catch (err) {
       throw err;

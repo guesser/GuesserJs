@@ -5,12 +5,12 @@ export default class BetOwnerBasedOracle {
   constructor(web3) {
     this.web3 = web3;
     this.BetOwnerBasedOracle = contract(contracts.BetOwnerBasedOracle);
-    this.BetOwnerBasedOracle.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
   async init() {
     try {
+      await this.BetOwnerBasedOracle.setProvider(this.web3.eth.currentProvider);
       this.instance = await this.BetOwnerBasedOracle.deployed();
     } catch (err) {
       throw err;

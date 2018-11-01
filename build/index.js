@@ -1,8 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
-const Guesser = require('./guesser');
+var Guesser = require('./guesser');
 
 exports.default = Guesser;

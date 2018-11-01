@@ -5,12 +5,12 @@ export default class OwnerBasedTermsProxy {
   constructor(web3) {
     this.web3 = web3;
     this.OwnerBasedTermsProxy = contract(contracts.OwnerBased);
-    this.OwnerBasedTermsProxy.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
   async init() {
     try {
+      await this.OwnerBasedTermsProxy.setProvider(this.web3.eth.currentProvider);
       this.instance = await this.OwnerBasedTermsProxy.deployed();
     } catch (err) {
       throw err;

@@ -1,76 +1,76 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true,
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 
-const _createClass = (function () { function defineProperties(target, props) { for (let i = 0; i < props.length; i++) { const descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }());
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-const _bet_registry_wrapper = require('./contract_wrappers/bet_registry_wrapper');
+var _bet_registry_wrapper = require('./contract_wrappers/bet_registry_wrapper');
 
-const _bet_registry_wrapper2 = _interopRequireDefault(_bet_registry_wrapper);
+var _bet_registry_wrapper2 = _interopRequireDefault(_bet_registry_wrapper);
 
-const _proxy_registry_wrapper = require('./contract_wrappers/proxy_registry_wrapper');
+var _proxy_registry_wrapper = require('./contract_wrappers/proxy_registry_wrapper');
 
-const _proxy_registry_wrapper2 = _interopRequireDefault(_proxy_registry_wrapper);
+var _proxy_registry_wrapper2 = _interopRequireDefault(_proxy_registry_wrapper);
 
-const _registry_setter_wrapper = require('./contract_wrappers/registry_setter_wrapper');
+var _registry_setter_wrapper = require('./contract_wrappers/registry_setter_wrapper');
 
-const _registry_setter_wrapper2 = _interopRequireDefault(_registry_setter_wrapper);
+var _registry_setter_wrapper2 = _interopRequireDefault(_registry_setter_wrapper);
 
-const _bet_kernel_wrapper = require('./contract_wrappers/bet_kernel_wrapper');
+var _bet_kernel_wrapper = require('./contract_wrappers/bet_kernel_wrapper');
 
-const _bet_kernel_wrapper2 = _interopRequireDefault(_bet_kernel_wrapper);
+var _bet_kernel_wrapper2 = _interopRequireDefault(_bet_kernel_wrapper);
 
-const _bet_payments_wrapper = require('./contract_wrappers/bet_payments_wrapper');
+var _bet_payments_wrapper = require('./contract_wrappers/bet_payments_wrapper');
 
-const _bet_payments_wrapper2 = _interopRequireDefault(_bet_payments_wrapper);
+var _bet_payments_wrapper2 = _interopRequireDefault(_bet_payments_wrapper);
 
-const _bet_oracle_wrapper = require('./contract_wrappers/bet_oracle_wrapper');
+var _bet_oracle_wrapper = require('./contract_wrappers/bet_oracle_wrapper');
 
-const _bet_oracle_wrapper2 = _interopRequireDefault(_bet_oracle_wrapper);
+var _bet_oracle_wrapper2 = _interopRequireDefault(_bet_oracle_wrapper);
 
-const _bet_terms_wrapper = require('./contract_wrappers/bet_terms_wrapper');
+var _bet_terms_wrapper = require('./contract_wrappers/bet_terms_wrapper');
 
-const _bet_terms_wrapper2 = _interopRequireDefault(_bet_terms_wrapper);
+var _bet_terms_wrapper2 = _interopRequireDefault(_bet_terms_wrapper);
 
-const _ERC20_bet_kernel_proxy = require('./contract_wrappers/bet_kernel_proxies/ERC20_bet_kernel_proxy');
+var _ERC20_bet_kernel_proxy = require('./contract_wrappers/bet_kernel_proxies/ERC20_bet_kernel_proxy');
 
-const _ERC20_bet_kernel_proxy2 = _interopRequireDefault(_ERC20_bet_kernel_proxy);
+var _ERC20_bet_kernel_proxy2 = _interopRequireDefault(_ERC20_bet_kernel_proxy);
 
-const _ERC721_bet_kernel_proxy = require('./contract_wrappers/bet_kernel_proxies/ERC721_bet_kernel_proxy');
+var _ERC721_bet_kernel_proxy = require('./contract_wrappers/bet_kernel_proxies/ERC721_bet_kernel_proxy');
 
-const _ERC721_bet_kernel_proxy2 = _interopRequireDefault(_ERC721_bet_kernel_proxy);
+var _ERC721_bet_kernel_proxy2 = _interopRequireDefault(_ERC721_bet_kernel_proxy);
 
-const _ERC20_bet_payment_proxy = require('./contract_wrappers/bet_payments_proxies/ERC20_bet_payment_proxy');
+var _ERC20_bet_payment_proxy = require('./contract_wrappers/bet_payments_proxies/ERC20_bet_payment_proxy');
 
-const _ERC20_bet_payment_proxy2 = _interopRequireDefault(_ERC20_bet_payment_proxy);
+var _ERC20_bet_payment_proxy2 = _interopRequireDefault(_ERC20_bet_payment_proxy);
 
-const _ERC721_bet_payment_proxy = require('./contract_wrappers/bet_payments_proxies/ERC721_bet_payment_proxy');
+var _ERC721_bet_payment_proxy = require('./contract_wrappers/bet_payments_proxies/ERC721_bet_payment_proxy');
 
-const _ERC721_bet_payment_proxy2 = _interopRequireDefault(_ERC721_bet_payment_proxy);
+var _ERC721_bet_payment_proxy2 = _interopRequireDefault(_ERC721_bet_payment_proxy);
 
-const _bet_owner_based_oracle_wrapper = require('./contract_wrappers/bet_oracle_proxies/bet_owner_based_oracle_wrapper');
+var _bet_owner_based_oracle_wrapper = require('./contract_wrappers/bet_oracle_proxies/bet_owner_based_oracle_wrapper');
 
-const _bet_owner_based_oracle_wrapper2 = _interopRequireDefault(_bet_owner_based_oracle_wrapper);
+var _bet_owner_based_oracle_wrapper2 = _interopRequireDefault(_bet_owner_based_oracle_wrapper);
 
-const _owner_based_oracle_wrapper = require('./contract_wrappers/bet_oracle_proxies/owner_based_oracle_wrapper');
+var _owner_based_oracle_wrapper = require('./contract_wrappers/bet_oracle_proxies/owner_based_oracle_wrapper');
 
-const _owner_based_oracle_wrapper2 = _interopRequireDefault(_owner_based_oracle_wrapper);
+var _owner_based_oracle_wrapper2 = _interopRequireDefault(_owner_based_oracle_wrapper);
 
-const _owner_based_wrapper = require('./contract_wrappers/bet_terms_proxies/owner_based_wrapper');
+var _owner_based_wrapper = require('./contract_wrappers/bet_terms_proxies/owner_based_wrapper');
 
-const _owner_based_wrapper2 = _interopRequireDefault(_owner_based_wrapper);
+var _owner_based_wrapper2 = _interopRequireDefault(_owner_based_wrapper);
 
-const _time_based_terms_wrapper = require('./contract_wrappers/bet_terms_proxies/time_based_terms_wrapper');
+var _time_based_terms_wrapper = require('./contract_wrappers/bet_terms_proxies/time_based_terms_wrapper');
 
-const _time_based_terms_wrapper2 = _interopRequireDefault(_time_based_terms_wrapper);
+var _time_based_terms_wrapper2 = _interopRequireDefault(_time_based_terms_wrapper);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-const Wrappers = (function () {
+var Wrappers = function () {
   function Wrappers(web3) {
     _classCallCheck(this, Wrappers);
 
@@ -116,10 +116,10 @@ const Wrappers = (function () {
       await this.ownerBasedOracle.init();
       await this.ownerBasedTermsProxy.init();
       await this.timeBasedTermsProxy.init();
-    },
+    }
   }]);
 
   return Wrappers;
-}());
+}();
 
 exports.default = Wrappers;

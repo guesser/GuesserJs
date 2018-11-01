@@ -7,7 +7,7 @@
     },
     "main": "./src/index.js",
     "scripts": {
-        "test": "mocha './__test__/tests.js'",
+        "test": "npm run babel && mocha './__test__/tests.js'",
         "init": "bash ./scripts/init_chain.sh",
         "lint": "./node_modules/.bin/eslint --fix ./src/",
         "babel": "babel --presets es2015 src -d build"

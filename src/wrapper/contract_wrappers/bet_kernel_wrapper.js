@@ -5,12 +5,12 @@ export default class BetKernel {
   constructor(web3) {
     this.web3 = web3;
     this.betKernel = contract(contracts.BetKernel);
-    this.betKernel.setProvider(this.web3.eth.currentProvider);
     this.instance = null;
   }
 
   async init() {
     try {
+      await this.betKernel.setProvider(this.web3.eth.currentProvider);
       this.instance = await this.betKernel.deployed();
     } catch (err) {
       throw err;
