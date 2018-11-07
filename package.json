@@ -22,8 +22,9 @@
     },
     "license": "ISC",
     "dependencies": {
+        "bignumber.js": "^8.0.1",
         "chai": "^4.1.2",
-        "guesser-contracts": "0.0.15",
+        "guesser-contracts": "0.0.16",
         "mocha": "^5.2.0",
         "truffle-contract": "4.0.0-next.0",
         "web3": "^1.0.0-beta.36"
