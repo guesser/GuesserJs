@@ -25,13 +25,17 @@ var Guesser = function () {
     this.web3 = Web3;
     this.contracts = new _index2.default(this.web3);
     this.helper = new _index4.default();
+    this.initialized = false;
   }
 
   _createClass(Guesser, [{
     key: 'init',
     value: async function init() {
-      await this.contracts.init();
-      await this.helper.init(this.contracts);
+      if (!this.initialized) {
+        await this.contracts.init();
+        await this.helper.init(this.contracts);
+        this.initialized = true;
+      }
     }
   }]);
 

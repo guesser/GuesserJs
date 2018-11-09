@@ -25,6 +25,14 @@ export default class BetKernel {
     return this.instance.address;
   }
 
+  // Events
+  async LogBetEntry() {
+    const betEvent = this.instance.LogBetEntry();
+    betEvent.watch((error, response) => {
+      console.log(response);
+    });
+  }
+
   // Registry Setter
   async setBetRegistry(address, sender) {
     try {

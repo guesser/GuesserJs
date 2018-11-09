@@ -80,6 +80,13 @@ describe('Basic Mutual Integration', () => {
     );
 
     betHash = betResult['0'];
+
+    expect(
+      await guesser.contracts.betRegistry.getBetCreator(betHash),
+    ).to.be.equal(accounts[0]);
+    expect(
+      await guesser.contracts.betRegistry.betExists(betHash),
+    ).to.be.equal(true);
   });
 
   it('should allow to place a bet from a user', async () => {

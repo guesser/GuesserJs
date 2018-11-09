@@ -118,6 +118,7 @@ export default class BetRegistry {
         termsProxy,
         termsHash,
         title,
+        sender,
         salt,
         { from: sender },
       );
@@ -130,6 +131,7 @@ export default class BetRegistry {
         termsProxy,
         termsHash,
         title,
+        sender,
         salt,
         { from: sender },
       );
@@ -197,6 +199,10 @@ export default class BetRegistry {
   }
 
   // Getters
+  getBetByIndex(index) {
+    return this.instance.getBet.call(index);
+  }
+
   getPlayerBetHash(hash, player, option, number) {
     return this.instance.getPlayerBetHash.call(
       hash,
@@ -271,7 +277,7 @@ export default class BetRegistry {
   }
 
   betExists(hash) {
-    return this.instance.betExists.call(hash);
+    return this.instance.betExists(hash);
   }
 
   playerBetExists(hash, playerBetHash) {

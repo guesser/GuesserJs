@@ -121,9 +121,9 @@ var BetRegistry = function () {
     value: async function createBet(kernelProxy, paymentsProxy, paymentsToken, oracleProxy, termsProxy, termsHash, title, sender) {
       var salt = Math.random() * 9007199254740991; // Js max number
       try {
-        var betHash = await this.instance.createBet.call(kernelProxy, paymentsProxy, paymentsToken, oracleProxy, termsProxy, termsHash, title, salt, { from: sender });
+        var betHash = await this.instance.createBet.call(kernelProxy, paymentsProxy, paymentsToken, oracleProxy, termsProxy, termsHash, title, sender, salt, { from: sender });
 
-        await this.instance.createBet(kernelProxy, paymentsProxy, paymentsToken, oracleProxy, termsProxy, termsHash, title, salt, { from: sender });
+        await this.instance.createBet(kernelProxy, paymentsProxy, paymentsToken, oracleProxy, termsProxy, termsHash, title, sender, salt, { from: sender });
 
         return betHash;
       } catch (err) {
@@ -171,6 +171,11 @@ var BetRegistry = function () {
 
     // Getters
 
+  }, {
+    key: 'getBetByIndex',
+    value: function getBetByIndex(index) {
+      return this.instance.getBet.call(index);
+    }
   }, {
     key: 'getPlayerBetHash',
     value: function getPlayerBetHash(hash, player, option, number) {
@@ -259,7 +264,7 @@ var BetRegistry = function () {
   }, {
     key: 'betExists',
     value: function betExists(hash) {
-      return this.instance.betExists.call(hash);
+      return this.instance.betExists(hash);
     }
   }, {
     key: 'playerBetExists',

@@ -41,6 +41,17 @@ var BetKernel = function () {
       return this.instance.address;
     }
 
+    // Events
+
+  }, {
+    key: 'LogBetEntry',
+    value: async function LogBetEntry() {
+      var betEvent = this.instance.LogBetEntry();
+      betEvent.watch(function (error, response) {
+        console.log(response);
+      });
+    }
+
     // Registry Setter
 
   }, {
