@@ -29,7 +29,11 @@ export default class BetKernel {
   async LogBetEntry() {
     const betEvent = this.instance.LogBetEntry();
     betEvent.watch((error, response) => {
-      console.log(response);
+      if (error) {
+        throw error;
+      } else {
+        return response;
+      }
     });
   }
 

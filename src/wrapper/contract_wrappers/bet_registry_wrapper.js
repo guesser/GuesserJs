@@ -253,7 +253,7 @@ export default class BetRegistry {
   }
 
   getTotalPrincipalInOption(hash, option) {
-    return this.instance.getTotalPrincipalInOption.call(hash, option);
+    return this.instance.getPrincipalInOption.call(hash, option);
   }
 
   getOptionTitle(hash, option) {
